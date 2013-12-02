@@ -1,6 +1,6 @@
 {
   "name": "taskist",
-  "description": "Provides a safer way to run tasks",
+  "description": "Glues your project configuration and tasks together",
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
   "version": "0.1.0",
   "dependencies": {

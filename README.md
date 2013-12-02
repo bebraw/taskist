@@ -1,5 +1,5 @@
 [![build status](https://secure.travis-ci.org/bebraw/taskist.png)](http://travis-ci.org/bebraw/taskist)
-# taskist - Provides a safer way to run tasks
+# taskist - Glues your project configuration and tasks together
 
 `taskist` provides a simple and safe way to glue your project configuration and tasks together. It uses [node-schedule](https://npmjs.org/package/node-schedule) internally. The basic idea is simple. Consider the example below (see also `demo/`):
 
