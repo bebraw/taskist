@@ -4,8 +4,10 @@
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
   "version": "0.1.0",
   "dependencies": {
+    "node-schedule": "~0.1.13"
   },
   "devDependencies": {
+    "require-dir": "~0.1.0"
   },
   "main": "index.js",
   "repository": {
