@@ -1,0 +1,26 @@
+{
+  "name": "taskist",
+  "description": "Provides a safer way to run tasks",
+  "author": "Juho Vepsalainen <bebraw@gmail.com>",
+  "version": "0.1.0",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bebraw/taskist.git"
+  },
+  "homepage": "https://github.com/bebraw/taskist",
+  "bugs": {
+    "url": "https://github.com/bebraw/taskist/issues"
+  },
+  "keywords": [],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bebraw/taskist/blob/master/LICENSE"
+    }
+  ]
+}
