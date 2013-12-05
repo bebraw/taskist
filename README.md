@@ -50,6 +50,8 @@ module.exports = function() {
 
 `taskist` simply glues your tasks and configuration together and begins to run your tasks. That's it! In case you misspell a task at your configuration or forget to invoke some task, `taskist` will kindly remind you about it. This way you can be sure the right tasks get run.
 
+In case you wish to trigger the tasks immediately pass `{instant: true}` as third parameter to `taskist`.
+
 ## License
 
 `taskist` is available under MIT. See LICENSE for more details.

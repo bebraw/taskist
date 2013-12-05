@@ -8,5 +8,7 @@ var config = require('./config');
 main();
 
 function main() {
-    taskist(config.tasks, tasks);
+    taskist(config.tasks, tasks, {
+        instant: true
+    });
 }

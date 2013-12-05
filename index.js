@@ -1,17 +1,23 @@
 var schedule = require('node-schedule');
 
 
-module.exports = function(config, tasks) {
+module.exports = function(config, tasks, extra) {
     var foundTasks = initialize(config, tasks);
-    var unusedTasks = findUnused(Object.keys(tasks), foundTasks);
+    var unusedTasks = findUnused(Object.keys(tasks), Object.keys(foundTasks));
 
     if(unusedTasks.length) {
         console.log('Failed to find configuration for `' + unusedTasks.join('`, `') + '`!');
     }
+
+    if(extra.instant) {
+        Object.keys(foundTasks).forEach(function(name) {
+            foundTasks[name]();
+        });
+    }
 };
 
 function initialize(config, tasks) {
-    var foundTasks = [];
+    var foundTasks = {};
 
     Object.keys(config).forEach(function(name) {
         var pattern = config[name];
@@ -21,7 +27,7 @@ function initialize(config, tasks) {
 
             schedule.scheduleJob(pattern, task);
 
-            foundTasks.push(name);
+            foundTasks[name] = task;
         }
         else {
             console.warn('Failed to find `' + name + '` amongst tasks!');
