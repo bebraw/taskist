@@ -1,3 +1,5 @@
+var async = require('async');
+var is = require('annois');
 var schedule = require('node-schedule');
 
 
@@ -9,10 +11,19 @@ module.exports = function(config, tasks, extra) {
         console.log('Failed to find configuration for `' + unusedTasks.join('`, `') + '`!');
     }
 
-    if(extra.instant) {
-        Object.keys(foundTasks).forEach(function(name) {
-            foundTasks[name]();
-        });
+    if(extra && extra.instant) {
+        var taskNames = Object.keys(foundTasks);
+
+        if(is.fn(extra.instant)) {
+            async.each(taskNames, function(name, cb) {
+                foundTasks[name](cb);
+            }, extra.instant);
+        }
+        else {
+            taskNames.forEach(function(name) {
+                foundTasks[name](noop);
+            });
+        }
     }
 };
 
@@ -25,7 +36,7 @@ function initialize(config, tasks) {
         if(name in tasks) {
             var task = tasks[name];
 
-            schedule.scheduleJob(pattern, task);
+            schedule.scheduleJob(pattern, task.bind(null, noop));
 
             foundTasks[name] = task;
         }
@@ -42,3 +53,6 @@ function findUnused(tasks, foundTasks) {
         return foundTasks.indexOf(name) == -1;
     });
 }
+
+function noop() {}
+

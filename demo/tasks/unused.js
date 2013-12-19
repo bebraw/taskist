@@ -1,3 +1,5 @@
-module.exports = function() {
+module.exports = function(cb) {
     console.log('unused');
+
+    cb();
 };
