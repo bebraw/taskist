@@ -16,12 +16,20 @@ module.exports = function(config, tasks, extra) {
 
         if(is.fn(extra.instant)) {
             async.each(taskNames, function(name, cb) {
-                foundTasks[name](cb);
+                var task = config[name];
+
+                if(!is.object(task) || !('instant' in task) || task.instant) {
+                    foundTasks[name](cb);
+                }
             }, extra.instant);
         }
         else {
             taskNames.forEach(function(name) {
-                foundTasks[name](noop);
+                var task = config[name];
+
+                if(!is.object(task) || !('instant' in task) || task.instant) {
+                    foundTasks[name](noop);
+                }
             });
         }
     }

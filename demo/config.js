@@ -2,7 +2,7 @@
 
 module.exports = {
     tasks: {
-        bye: {second: 30},
+        bye: {second: 30, instant: false},
         hello: '* * * * *',
         nonexistent: '* * *'
     }

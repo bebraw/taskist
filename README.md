@@ -52,7 +52,7 @@ module.exports = function(cb) {
 
 `taskist` simply glues your tasks and configuration together and begins to run your tasks. That's it! In case you misspell a task at your configuration or forget to invoke some task, `taskist` will kindly remind you about it. This way you can be sure the right tasks get run.
 
-In case you wish to trigger the tasks immediately pass `{instant: true}` as third parameter to `taskist`. Besides a boolean you may also pass a function to `instant`. In this case the function will be invoked once the functions have completed.
+In case you wish to trigger the tasks immediately pass `{instant: true}` as third parameter to `taskist`. Besides a boolean you may also pass a function to `instant`. In this case the function will be invoked once the functions have completed. It is possible to override this behavior per task by setting `instant` as `false` at configuration. Ie. `task: {hour: 10, instant: false}` would work.
 
 ## License
 
