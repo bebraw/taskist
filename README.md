@@ -54,6 +54,8 @@ module.exports = function(cb) {
 
 In case you wish to trigger the tasks immediately pass `{instant: true}` as third parameter to `taskist`. Besides a boolean you may also pass a function to `instant`. In this case the function will be invoked once the functions have completed. It is possible to override this behavior per task by setting `instant` as `false` at configuration. Ie. `task: {hour: 10, instant: false}` would work.
 
+If you want to execute `instant` tasks in series, set `{series: true}`.
+
 ## License
 
 `taskist` is available under MIT. See LICENSE for more details.

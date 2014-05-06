@@ -1,3 +1,5 @@
+'use strict';
+
 var async = require('async');
 var is = require('annois');
 var schedule = require('node-schedule');
@@ -12,26 +14,16 @@ module.exports = function(config, tasks, extra) {
     }
 
     if(extra && extra.instant) {
-        var taskNames = Object.keys(foundTasks);
+        var eachName = extra.series? 'eachSeries': 'each';
+        var done = is.fn(extra.instant)? extra.instant: noop;
 
-        if(is.fn(extra.instant)) {
-            async.each(taskNames, function(name, cb) {
-                var task = config[name];
+        async[eachName](Object.keys(foundTasks), function(name, cb) {
+            var task = config[name];
 
-                if(!is.object(task) || !('instant' in task) || task.instant) {
-                    foundTasks[name](cb);
-                }
-            }, extra.instant);
-        }
-        else {
-            taskNames.forEach(function(name) {
-                var task = config[name];
-
-                if(!is.object(task) || !('instant' in task) || task.instant) {
-                    foundTasks[name](noop);
-                }
-            });
-        }
+            if(!is.object(task) || !('instant' in task) || task.instant) {
+                foundTasks[name](cb);
+            }
+        }, done);
     }
 };
 
@@ -58,7 +50,7 @@ function initialize(config, tasks) {
 
 function findUnused(tasks, foundTasks) {
     return tasks.filter(function(name) {
-        return foundTasks.indexOf(name) == -1;
+        return foundTasks.indexOf(name) === -1;
     });
 }
 

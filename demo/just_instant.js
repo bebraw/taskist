@@ -9,7 +9,8 @@ main();
 
 function main() {
     taskist(config.tasks, tasks, {
-        instant: true
+        instant: true,
+        series: true
     });
 }
 
