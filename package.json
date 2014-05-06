@@ -2,7 +2,7 @@
   "name": "taskist",
   "description": "Glues your project configuration and tasks together",
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "dependencies": {
     "node-schedule": "~0.1.13",
     "annois": "~0.3.0",
