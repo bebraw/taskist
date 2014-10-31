@@ -23,6 +23,9 @@ module.exports = function(config, tasks, extra) {
             if(!is.object(task) || !('instant' in task) || task.instant) {
                 foundTasks[name](cb);
             }
+            else {
+                cb();
+            }
         }, done);
     }
 };
